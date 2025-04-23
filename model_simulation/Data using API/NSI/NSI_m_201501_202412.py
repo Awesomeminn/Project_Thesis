@@ -60,4 +60,3 @@ summary = summary.rename({
     "std": "표준편차"
 })
 summary.round(2)
-
