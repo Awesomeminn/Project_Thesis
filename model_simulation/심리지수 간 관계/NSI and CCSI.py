@@ -76,4 +76,35 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 #===================================================================================================================#
-# 4. 시계열 안정성 검정 (ADF, PP, KPSS)
+# 4. 시계열 정상성 검정 (ADF)
+
+## 패키지 설치 및 임포트 
+from statsmodels.tsa.stattools import adfuller
+
+## ADF 검정결과 출력 함수 정의
+def adf_test(series, name="Series"):
+    print(f"--- ADF Test: {name} ---")
+    result = adfuller(series.dropna())
+    print(f"Test Statistic : {result[0]:.4f}")
+    print(f"p-value        : {result[1]:.4f}")
+    print(f"Critical Values: {result[4]}")
+    print("Stationary" if result[1] < 0.05 else "Non-stationary")
+    print()
+
+## CCSI_m, NSI_m 수준변수 검정결과
+adf_test(CCSI_m['Value'], name="CCSI (Level)")
+adf_test(NSI_m['Value'], name="NSI (Level)")
+
+## 차분을 위해 numpy package import
+import numpy as np
+
+## 로그차분
+CCSI_log_diff = np.log(CCSI_m['Value']).diff()
+NSI_log_diff = np.log(NSI_m['Value']).diff()
+
+## 로그차분한 변수들 ADF 검정 
+adf_test(CCSI_log_diff, name="CCSI (Log-Diff)")
+adf_test(NSI_log_diff, name="NSI (Log-Diff)")
+#===================================================================================================================#
+
+
