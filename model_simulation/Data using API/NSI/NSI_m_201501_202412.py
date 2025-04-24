@@ -59,4 +59,5 @@ summary = summary.rename({
     "var": "분산",
     "std": "표준편차"
 })
-summary.round(2)
+print("===NSI 기초통계량===")
+print(summary.round(2))
