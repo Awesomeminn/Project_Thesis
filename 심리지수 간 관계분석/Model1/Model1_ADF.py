@@ -26,13 +26,3 @@ print('critical values: ')
 for key, value in adf_result[4].items():
     print(f"\t{key} {value}")
 #======================================================================================================#
-# 3. ADF Test (BSI_exp_m level)
-value_series = BSI_exp_m['Value']
-adf_result = adfuller(value_series, autolag='AIC')
-print(f'ADF statistics : {adf_result[0]}')
-print(f'p-value {adf_result[1]}')
-print('critical values: ')
-for key, value in adf_result[4].items():
-    print(f"\t{key} {value}")
-#======================================================================================================#
-# 4. 로그 차분 및 추후 분석을 위해 데이터프레임 하나로 병합

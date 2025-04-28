@@ -1,6 +1,0 @@
-1. 수준변수 ADF 검정
- - NSI랑 CCSI는 둘 다 AIC, BIC 기준 모두에서 ADF 검정을 통과함
- - BSI_expected는 두 기준 모두에서 ADF 검정 귀무가설을 기각 못했음
-
-2. 로그 1차 차분 후 ADF 검정
- 

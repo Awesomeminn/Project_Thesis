@@ -1,4 +1,4 @@
-# Model 1: NSI, CCSI, BSI_제조업전망 (Before COVID-19)
+# Model 1: NSI, CCSI
 #==============================================================================================#
 # 0. 필요한 패키지들 설치하기
 import requests
@@ -71,34 +71,3 @@ ax.legend(fontsize=10)
 plt.tight_layout()
 plt.show()
 #==============================================================================================#
-# 3. BSI_기업심리지수(전망)
-## 3.1 Raw data 불러와서 확인하기
-url = "http://ecos.bok.or.kr/api/StatisticSearch/33RX7OBHFFA28P4I07F3/json/kr/1/120/512Y014/M/201001/201912/99988/BX/"
-response = requests.get(url)
-data = response.json()
-rdata = data['StatisticSearch']["row"]
-df = pd.DataFrame(rdata)
-df
-## 3.2 필요한 칼럼 추출 및 변수명 변경 + 날짜 값 연/월 구분하기
-columns_to_keep = ['TIME', 'DATA_VALUE']
-BSI_exp_m = df[columns_to_keep].copy()
-BSI_exp_m = BSI_exp_m.rename(columns={'TIME': 'Date', 'DATA_VALUE': 'Value'})
-BSI_exp_m['Date'] = BSI_exp_m['Date'].str[:4] + '-' + BSI_exp_m['Date'].str[4:] ## 연,월 구분
-BSI_exp_m
-## 3.3 Data types 변경하고, 확인하기
-BSI_exp_m['Date'] = pd.to_datetime(BSI_exp_m['Date'])
-BSI_exp_m['Value'] = BSI_exp_m['Value'].astype(float)
-BSI_exp_m.info()
-## 3.4 BSI_exp_m Time Path 시각화 하기
-fig, ax = plt.subplots(figsize=(12, 6))
-ax.plot(BSI_exp_m['Date'], BSI_exp_m['Value'], label='Expected Business Sentiment Index (BSI_exp_m)', color='orange', marker='o', markersize=4)
-ax.xaxis.set_major_locator(mdates.YearLocator())  ## 1년 간격
-ax.xaxis.set_minor_locator(mdates.MonthLocator())  ## 월별 보조 눈금
-ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))  ## 연도 형식
-ax.set_ylabel('BSI_exp_m', fontsize=12)
-ax.set_xlabel('Date', fontsize=12)
-ax.grid(which='major', linestyle='-', linewidth=0.5, alpha=0.7)
-ax.grid(which='minor', linestyle='--', linewidth=0.5, alpha=0.5)
-ax.legend(fontsize=10)
-plt.tight_layout()
-plt.show()
