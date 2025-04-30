@@ -1,3 +1,9 @@
+# 모든 코드 맨 위에 이거 복붙하셈
+import os 
+os.getcwd()
+os.chdir('C:/Users/Awesomemin/Desktop/연구아카이브/Project_Thesis/심리지수와 거시변수/Model 1/Before COVID')
+os.getcwd()
+#=====================================================================================================#
 # 데이터 불러오고 패키지 임포트 
 from Data_before_COVID import NSI_m, CCSI_m, NSI, CCSI
 # pip install statsmodels 먼저 콘솔에 실행하고 아래코드 실행할 것

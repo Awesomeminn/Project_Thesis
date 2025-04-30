@@ -1,3 +1,8 @@
+# 모든 코드 맨 위에 이거 복붙하셈
+import os 
+os.getcwd()
+os.chdir('C:/Users/Awesomemin/Desktop/연구아카이브/Project_Thesis/심리지수와 거시변수/Model 1/Before COVID')
+os.getcwd()
 # 분석을 위해 기존에 작업한 파일에서 데이터 불러오기
 from Data_before_COVID import NSI, CCSI 
 # 필요한 라이브러리 설치
