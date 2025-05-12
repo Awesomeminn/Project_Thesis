@@ -6,6 +6,7 @@ os.getcwd()
 # 1. 작업한 데이터들 다 가져오기
 from NSI import News
 from 현재경기판단CSI import curr_econ_CSI
+from 현재생활형편CSI import curr_living_CSI
 from 내구재지출전망CSI import durable_consume_exp_CSI
 from 외식비지출전망CSI import eatout_consume_exp_CSI
 #======================================================================================================#
@@ -14,8 +15,9 @@ import pandas as pd
 log_diff_dict = {
     'News': News['log_diff'],
     'curr_econ_CSI': curr_econ_CSI['log_diff'],
+    'curr_living_CSI':curr_living_CSI['log_diff'],
     'durable_consume_exp_CSI': durable_consume_exp_CSI['log_diff'],
-    'eatout_consume_exp_CSI': eatout_consume_exp_CSI['log_diff'],
+    'eatout_consume_exp_CSI': eatout_consume_exp_CSI['log_diff']
 }
 dates = News['Date']
 combined_df = pd.DataFrame(log_diff_dict)
@@ -24,4 +26,4 @@ combined_df.set_index('date', inplace=True)
 merge = combined_df.dropna()
 merge
 #======================================================================================================#
-merge.to_csv('merge.csv', index=True)
+merge.to_csv('merge1.csv', index=True)
