@@ -6,18 +6,18 @@ os.getcwd()
 # 1. 작업한 데이터들 다 가져오기
 from NSI import News
 from 현재경기판단CSI import curr_econ_CSI
-from 현재생활형편CSI import curr_living_CSI
 from 내구재지출전망CSI import durable_consume_exp_CSI
 from 외식비지출전망CSI import eatout_consume_exp_CSI
+from 여행비지출전망CSI import travel_consume_exp_CSI
 #======================================================================================================#
 # 2. 데이터 프레임 만들기
 import pandas as pd
 log_diff_dict = {
     'News': News['log_diff'],
     'curr_econ_CSI': curr_econ_CSI['log_diff'],
-    'curr_living_CSI':curr_living_CSI['log_diff'],
     'durable_consume_exp_CSI': durable_consume_exp_CSI['log_diff'],
-    'eatout_consume_exp_CSI': eatout_consume_exp_CSI['log_diff']
+    'eatout_consume_exp_CSI': eatout_consume_exp_CSI['log_diff'],
+    'travel_consume_exp_CSI':travel_consume_exp_CSI['log_diff']
 }
 dates = News['Date']
 combined_df = pd.DataFrame(log_diff_dict)
