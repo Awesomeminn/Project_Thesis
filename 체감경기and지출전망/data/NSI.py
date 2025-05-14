@@ -1,6 +1,6 @@
 # 모든 코드 맨 위에 이거 복붙하셈
 import os 
-os.chdir('C:/Users/Awesomemin/Desktop/연구아카이브/Project_Thesis/체감경기and지출전망/Model2/data')
+os.chdir('C:/Users/Awesomemin/Desktop/연구아카이브/Project_Thesis/체감경기and지출전망/data')
 os.getcwd()
 #======================================================================================================#
 # 1. News Sentiment Index
@@ -9,7 +9,7 @@ import requests
 import pandas as pd
 from xml.etree import ElementTree as ET
 ## 1.2 raw data 불러오기 (한국은행 Open API)
-url = "http://ecos.bok.or.kr/api/StatisticSearch/33RX7OBHFFA28P4I07F3/json/kr/1/1000/521Y001/M/201301/202412/A001/"
+url = "http://ecos.bok.or.kr/api/StatisticSearch/33RX7OBHFFA28P4I07F3/json/kr/1/1000/521Y001/M/201001/202412/A001/"
 response = requests.get(url)
 data = response.json()
 rdata = data['StatisticSearch']["row"]
